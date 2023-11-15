@@ -8,7 +8,7 @@
  */
 
 import propTypes from "prop-types";
-const Button = ({ bgColor = "bg-green-100", onClick, title = "Save" }) => {
+const Button = ({ bgColor = "bg-green-600", onClick, title = "Save" }) => {
     return (
         <button
             onClick={onClick}
