@@ -6,12 +6,15 @@ i18n.use(initReactI18next).init({
     lng: "en",
     resources: {
         en: {
+            // eslint-disable-next-line no-undef
             translation: require("./locales/en/translations.json"),
         },
         mr: {
+            // eslint-disable-next-line no-undef
             translation: require("./locales/mr/translations.json"),
         },
         hi: {
+            // eslint-disable-next-line no-undef
             translation: require("./locales/hi/translations.json"),
         },
     },
