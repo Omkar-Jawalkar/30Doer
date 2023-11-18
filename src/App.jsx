@@ -5,9 +5,11 @@ import Footer from "./components/footer/Footer";
 
 const App = () => {
     return (
-        <div className="min-h-screen  bg-gradient-to-r from-rose-100 to-teal-100">
-            <Navbar />
-            <RouterProvider router={router} />
+        <div className="min-h-screen flex flex-col justify-between items-center  bg-gradient-to-r from-rose-100 to-teal-100">
+            <div className="flex h-full flex-col justify-between items-center ">
+                <Navbar />
+                <RouterProvider router={router} />
+            </div>
             <Footer />
         </div>
     );
