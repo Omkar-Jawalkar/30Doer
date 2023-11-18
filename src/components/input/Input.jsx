@@ -4,7 +4,7 @@ const Input = ({ state, setState }) => {
     return (
         <input
             value={state}
-            className="p-2 shadow-md outline-none w-full   m-2  rounded-md "
+            className="p-2 shadow-md outline-none w-full  rounded-md "
             placeholder="Enter Your Task"
             onChange={(e) => {
                 setState(e.target.value);
