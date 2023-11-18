@@ -1,11 +1,11 @@
 import { PropTypes } from "prop-types";
 
-const Input = ({ state, setState }) => {
+const Input = ({ state, setState, placeholder }) => {
     return (
         <input
             value={state}
             className="p-2 shadow-md outline-none w-full  rounded-md "
-            placeholder="Enter Your Task"
+            placeholder={placeholder}
             onChange={(e) => {
                 setState(e.target.value);
             }}
@@ -16,6 +16,7 @@ const Input = ({ state, setState }) => {
 Input.propTypes = {
     state: PropTypes.string,
     setState: PropTypes.func,
+    placeholder: PropTypes.string,
 };
 
 export default Input;

@@ -1,12 +1,9 @@
-import { useState } from "react";
-import Button from "../../components/button/Button";
-import Input from "../../components/input/Input";
+import FirstLogin from "../../components/first-login/FirstLogin";
 
 const Home = () => {
-    const [first, setFirst] = useState("");
     return (
-        <div className="w-full">
-            <Input state={first} setState={setFirst} />
+        <div className="w-full h-full">
+            <FirstLogin />
         </div>
     );
 };
