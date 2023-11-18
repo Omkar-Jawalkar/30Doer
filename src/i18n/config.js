@@ -7,15 +7,15 @@ i18n.use(initReactI18next).init({
     resources: {
         en: {
             // eslint-disable-next-line no-undef
-            translation: require("./locales/en/translations.json"),
+            translation: import("./locales/en/translations.json"),
         },
         mr: {
             // eslint-disable-next-line no-undef
-            translation: require("./locales/mr/translations.json"),
+            translation: import("./locales/mr/translations.json"),
         },
         hi: {
             // eslint-disable-next-line no-undef
-            translation: require("./locales/hi/translations.json"),
+            translation: import("./locales/hi/translations.json"),
         },
     },
 });

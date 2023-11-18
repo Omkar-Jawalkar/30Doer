@@ -1,11 +1,7 @@
 import Button from "../../components/button/Button";
 
 const Home = () => {
-    return (
-        <div>
-            <Button onClick={() => {}} />
-        </div>
-    );
+    return <div>Hey</div>;
 };
 
 export default Home;
