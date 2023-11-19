@@ -24,12 +24,17 @@ const FirstLogin = () => {
                     setState={setName}
                 />
 
-                <div className="flex w-full justify-end">
+                <div className="flex w-full gap-2 justify-end">
                     <Button
                         onClick={() => {
                             onSave();
                         }}
-                        title="Next.."
+                        title="Next..."
+                    />
+                    <Button
+                        bgColor="bg-red-600"
+                        onClick={() => {}}
+                        title="Cancel"
                     />
                 </div>
             </div>
