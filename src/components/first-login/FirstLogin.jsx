@@ -16,7 +16,7 @@ const FirstLogin = () => {
         }
     }, []);
     return (
-        <div className="w-full h-[80vh] flex flex-col justify-center items-center backdrop-blur-3xl bg-white/30">
+        <div className="w-full h-[80vh] flex flex-col justify-center items-center">
             <div className="bg-white rounded-md flex flex-col h-1/3 w-5/6 md:h-2/5 shadow-2xl md:w-1/3 justify-between items-center px-4 p-6 ">
                 <Input
                     placeholder={"Enter your name..."}
