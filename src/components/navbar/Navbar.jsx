@@ -1,6 +1,5 @@
 import { FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
-
 const Navbar = () => {
     return (
         <div className="flex w-full justify-between border-b shadow-md  backdrop-blur-xl  items-center p-6">
@@ -13,8 +12,7 @@ const Navbar = () => {
 
             <ul className="flex flex-1 justify-center gap-3 items-center ">
                 <li className="cursor-pointer ">
-                    {/* <Link to={"/qr"}>Home</Link> */}
-                    home
+                    <Link to={"/qr"}>Home</Link>
                 </li>
                 <li className="cursor-pointer">Aboutus</li>
             </ul>
