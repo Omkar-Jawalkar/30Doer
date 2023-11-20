@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Home from "../pages/home/Home";
 import AddInfo from "../pages/addinfo/AddInfo";
+import Qr from "../pages/qr/Qr";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -12,7 +13,7 @@ const router = createBrowserRouter([
     },
     {
         path: "/qr",
-        element: <Home />,
+        element: <Qr />,
     },
     {
         path: "/finishedTasks",

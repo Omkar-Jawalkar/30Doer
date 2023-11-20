@@ -1,11 +1,10 @@
 // import FirstLogin from "../../components/first-login/FirstLogin";
 
-import ShowQR from "../../components/show-qr/ShowQR";
 const Home = () => {
     return (
-        <div className="w-full flex justify-center items-center  h-full">
+        <div className="w-full  min-h-max flex flex-col justify-center items-center ">
             {/* <FirstLogin /> */}
-            <ShowQR />
+            <h1>This is home</h1>
         </div>
     );
 };
