@@ -1,27 +1,81 @@
 import { FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { IoIosMenu, IoMdArrowRoundBack } from "react-icons/io";
+import { useState, useEffect } from "react";
 const Navbar = () => {
-    return (
-        <div className="flex w-full justify-between border-b shadow-md  backdrop-blur-xl  items-center p-6">
-            <div className="text-3xl   p-2 flex-1 font-bold ">
-                <h1 className="" onClick={() => {}}>
-                    {" "}
-                    30 Doer
-                </h1>
-            </div>
+    const [showMobileMenu, setShowMobileMenu] = useState(false);
+    const [name, setName] = useState("second");
 
-            <ul className="flex flex-1 justify-center gap-3 items-center ">
-                <li className="cursor-pointer ">
-                    <Link to={"/qr"}>Home</Link>
-                </li>
-                <li className="cursor-pointer">Aboutus</li>
-            </ul>
-            <div className="flex-1 flex justify-end w-full items-center ">
-                <FaUser
-                    size={40}
-                    className=" border-black border shadow-sm p-2 rounded-full cursor-pointer"
-                />
+    useEffect(() => {
+        const name = localStorage.getItem("name");
+        if (name) {
+            setName(name);
+        }
+    }, []);
+
+    return (
+        <div className="relative">
+            <div
+                className={`flex w-full justify-between border-b shadow-md  backdrop-blur-xl  items-center py-4 px-4`}
+            >
+                <div className="md:text-3xl text-2xl   p-2 flex-1 font-bold ">
+                    <Link
+                        to={"/"}
+                        className="cursor-pointer"
+                        onClick={() => {}}
+                    >
+                        {" "}
+                        30 Doer
+                    </Link>
+                </div>
+
+                <ul className=" hidden md:flex flex-1 justify-center gap-3 items-center ">
+                    <li className="cursor-pointer ">
+                        <Link to={"/qr"}>Home</Link>
+                    </li>
+                    <li className="cursor-pointer">
+                        <Link to={"/aboutus"}>About us</Link>
+                    </li>
+                </ul>
+
+                <div className="flex-1 hidden md:flex justify-end w-full items-center ">
+                    <FaUser
+                        size={40}
+                        className=" border-black border shadow-sm p-2 rounded-full cursor-pointer"
+                    />
+                </div>
+
+                <div
+                    onClick={() => {
+                        setShowMobileMenu((prev) => !prev);
+                    }}
+                    className=" flex md:hidden justify-end items-center"
+                >
+                    <IoIosMenu size={50} className="p-2 cursor-pointer" />
+                </div>
             </div>
+            {showMobileMenu ? (
+                <div className=" shadow-xl min-h-screen w-5/6 gap-4 bg-white absolute top-0 transition-all right-0 ">
+                    {/* TOP Part */}
+                    <div className="flex justify-start w-full items-center p-2">
+                        <button
+                            onClick={() => {
+                                setShowMobileMenu((prev) => !prev);
+                            }}
+                        >
+                            <IoMdArrowRoundBack size={30} />
+                        </button>
+                    </div>
+
+                    {/* Mid Part */}
+
+                    <div className="flex my-4 flex-col ">
+                        <h1 className="text-2xl text-center">Welcome {name}</h1>
+                    </div>
+                </div>
+            ) : (
+                <></>
+            )}
         </div>
     );
 };
