@@ -1,23 +1,41 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import QRCode from "react-qr-code";
 
 const ShowQR = () => {
+    const [showQrCode, setShowQrCode] = useState(false);
+    const [name, setName] = useState("");
     const generateQRCode = () => {
         const name = localStorage.getItem("name");
         if (name) {
-            // !TODO : Write logic to generate QR Code
+            setName(name);
         } else {
             alert("Please enter Name");
         }
     };
 
     useEffect(() => {
+        if (name.length > 0) {
+            setShowQrCode(true);
+        }
+    }, [name]); //
+
+    useEffect(() => {
         generateQRCode();
     }, []);
 
     return (
-        <div className="bg-white rounded-md flex flex-col h-1/3 w-5/6 md:h-2/5 shadow-2xl md:w-2/3 justify-between items-center px-4 p-6 ">
-            <h1>Please Save this QR Code</h1>
-            <button>Download</button>
+        <div className="bg-white rounded-md flex space-y-4 flex-col  shadow-2xl  justify-between items-center px-4 p-6 ">
+            <div>
+                {showQrCode && (
+                    <QRCode
+                        name="ScanToAddAttendance"
+                        size={200}
+                        value={name}
+                    />
+                )}
+            </div>
+            <h1 className="pt-5">Please Save this QR Code</h1>
+            <button className="px-2 py-1 border rounded-md ">Download</button>
         </div>
     );
 };
