@@ -1,7 +1,7 @@
 import { RouterProvider } from "react-router-dom";
-import router from "./routes/Routes";
 import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
+import router from "./routes/Routes";
 
 const App = () => {
     return (
