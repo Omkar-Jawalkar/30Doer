@@ -2,6 +2,7 @@ import { FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { IoIosMenu, IoMdArrowRoundBack } from "react-icons/io";
 import { useState, useEffect } from "react";
+
 const Navbar = () => {
     const [showMobileMenu, setShowMobileMenu] = useState(false);
     const [name, setName] = useState("second");
@@ -55,7 +56,7 @@ const Navbar = () => {
                 </div>
             </div>
             {showMobileMenu ? (
-                <div className=" shadow-xl min-h-screen w-5/6 gap-4 bg-white absolute top-0 transition-all right-0 ">
+                <div className=" shadow-xl flex flex-col justify-start min-h-screen w-5/6 gap-4 bg-white absolute top-0 transition-all right-0 ">
                     {/* TOP Part */}
                     <div className="flex justify-start w-full items-center p-2">
                         <button
@@ -70,7 +71,32 @@ const Navbar = () => {
                     {/* Mid Part */}
 
                     <div className="flex my-4 flex-col ">
-                        <h1 className="text-2xl text-center">Welcome {name}</h1>
+                        <h1 className="text-2xl text-center">
+                            Welcome <span className="underline">{name}</span>
+                        </h1>
+
+                        <ul className="px-4 flex flex-col gap-3 items-center my-4">
+                            <li className="cursor-pointer hover:text-slate-400 transition-all duration-150 ">
+                                <Link
+                                    to={"/qr"}
+                                    onClick={() => {
+                                        setShowMobileMenu(false); //
+                                    }}
+                                >
+                                    Home
+                                </Link>
+                            </li>
+                            <li className="cursor-pointer hover:text-slate-400 transition-all duration-150 ">
+                                <Link
+                                    to={"/aboutus"}
+                                    onClick={() => {
+                                        setShowMobileMenu(false); //
+                                    }}
+                                >
+                                    About us
+                                </Link>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             ) : (
