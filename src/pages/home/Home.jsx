@@ -12,7 +12,7 @@ const Home = () => {
     const [streak, setStreak] = useState(Array(30).fill(true));
 
     useEffect(() => {
-        console.log(streak);
+        console.log(streak); 
     }, []);
 
     const navigate = useNavigate();

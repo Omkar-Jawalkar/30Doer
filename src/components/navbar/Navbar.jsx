@@ -2,10 +2,15 @@ import { FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { IoIosMenu, IoMdArrowRoundBack } from "react-icons/io";
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 const Navbar = () => {
     const [showMobileMenu, setShowMobileMenu] = useState(false);
     const [name, setName] = useState("second");
+
+    const { t } = useTranslation();
+
+    console.log(t("39=0"));
 
     useEffect(() => {
         const name = localStorage.getItem("name");
@@ -26,7 +31,7 @@ const Navbar = () => {
                         onClick={() => {}}
                     >
                         {" "}
-                        30 Doer
+                        {t("logoName")}
                     </Link>
                 </div>
 
