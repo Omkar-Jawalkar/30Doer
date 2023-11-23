@@ -10,7 +10,6 @@ const Navbar = () => {
 
     const { t } = useTranslation();
 
-    console.log(t("39=0"));
 
     useEffect(() => {
         const name = localStorage.getItem("name");
