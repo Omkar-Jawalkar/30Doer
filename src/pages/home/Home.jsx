@@ -2,6 +2,7 @@
 import { BsQrCodeScan, BsQrCode } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+
 const Home = () => {
     /*
      *
@@ -10,12 +11,22 @@ const Home = () => {
      *
      */
     const [streak, setStreak] = useState(Array(30).fill(false));
+    const [userLogin, setUserLogin] = useState(null);
+    const navigate = useNavigate();
+
+    const getUserLoginStatus = () => {
+        const name = localStorage.getItem("name");
+        if (name) {
+            setUserLogin(true);
+        } else {
+            navigate("/register");
+        }
+    };
 
     useEffect(() => {
-        console.log(streak);
+        getUserLoginStatus();
     }, []);
 
-    const navigate = useNavigate();
     return (
         <div className="w-full mt-12  min-h-[70vh] flex flex-col justify-center items-center ">
             {/* <FirstLogin /> */}

@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import Button from "../button/Button";
 import Input from "../input/Input";
+import { useNavigate } from "react-router-dom";
 
 const FirstLogin = () => {
     const [name, setName] = useState("");
-
+    const navigate = useNavigate();
     const onSave = () => {
         localStorage.setItem("name", name);
+        navigate("/qr");
     };
 
     useEffect(() => {
@@ -29,12 +31,7 @@ const FirstLogin = () => {
                         onClick={() => {
                             onSave();
                         }}
-                        title="Next..."
-                    />
-                    <Button
-                        bgColor="bg-red-600"
-                        onClick={() => {}}
-                        title="Cancel"
+                        title="Continue"
                     />
                 </div>
             </div>
