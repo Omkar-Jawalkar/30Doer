@@ -3,6 +3,7 @@ import Home from "../pages/home/Home";
 import AddInfo from "../pages/addinfo/AddInfo";
 import Qr from "../pages/qr/Qr";
 import Aboutus from "../pages/aboutus/Aboutus";
+import SelectLanguage from "../pages/selectLanguage/SelectLanguage";
 
 import NavbarWrapper from "../components/navbarwrapper/NavbarWrapper";
 const router = createBrowserRouter([
@@ -24,7 +25,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/selectlanguage",
-                element: <Home />,
+                element: <SelectLanguage />,
             },
             {
                 path: "/aboutus",

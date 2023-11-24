@@ -10,7 +10,6 @@ const Navbar = () => {
 
     const { t } = useTranslation();
 
-
     useEffect(() => {
         const name = localStorage.getItem("name");
         if (name) {
@@ -35,11 +34,14 @@ const Navbar = () => {
                 </div>
 
                 <ul className=" hidden md:flex flex-1 justify-center gap-3 items-center ">
-                    <li className="cursor-pointer ">
-                        <Link to={"/qr"}>Home</Link>
-                    </li>
+                    {/* <li className="cursor-pointer ">
+                        <Link to={"/qr"}>QR</Link>
+                    </li> */}
                     <li className="cursor-pointer">
                         <Link to={"/aboutus"}>About us</Link>
+                    </li>
+                    <li className="cursor-pointer">
+                        <Link to={"/selectlanguage"}>Language</Link>
                     </li>
                 </ul>
 

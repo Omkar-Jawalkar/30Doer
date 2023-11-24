@@ -9,17 +9,17 @@ const Home = () => {
      *
      *
      */
-    const [streak, setStreak] = useState(Array(30).fill(true));
+    const [streak, setStreak] = useState(Array(30).fill(false));
 
     useEffect(() => {
-        console.log(streak); 
+        console.log(streak);
     }, []);
 
     const navigate = useNavigate();
     return (
-        <div className="w-full mt-12  min-h-max flex flex-col justify-center items-center ">
+        <div className="w-full mt-12  min-h-[70vh] flex flex-col justify-center items-center ">
             {/* <FirstLogin /> */}
-            <div className="bg-white p-4 gap-12 w-3/4 md:w-2/5 flex flex-col justify-center items-center rounded-md shadom-2xl">
+            <div className="bg-white p-4 gap-6 max-w-[70%] md:max-w-[50%] flex flex-col justify-center items-center rounded-md shadom-2xl">
                 <h2 className="text-center text-xl ">task name</h2>
 
                 <div className="flex w-full items-center  justify-between p-2">
@@ -41,18 +41,18 @@ const Home = () => {
                     </button>
                 </div>
 
-                <div className="grid grid-rows-4 grid-flow-col gap-4">
+                <div className="grid grid-rows-5 items-center grid-flow-col gap-4">
                     {streak.map((value, index) => {
                         return (
                             <div
                                 key={index}
                                 className={`${
-                                    value ? "bg-green-600" : "bg-gray-600"
-                                } shadow-xl px-2 py-1 w-full h-full`}
+                                    value ? "bg-green-600" : "bg-gray-500"
+                                } shadow-xl px-3 py-3 max-w-[100%]  max-h-[100%]`}
                             >
-                                <span className="font-bold text-center text-white">
+                                {/* <span className="font-bold m-0 p-0 text-center text-white">
                                     {index}
-                                </span>
+                                </span> */}
                             </div>
                         );
                     })}
