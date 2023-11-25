@@ -1,11 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import QRCode from "react-qr-code";
-const options = {
-    allowTaint: true,
-    useCORS: true,
-    backgroundColor: "rgba(0,0,0,0)",
-    removeContainer: true,
-};
+import html2canvas from "html2canvas";
 
 const ShowQR = () => {
     const [showQrCode, setShowQrCode] = useState(false);
@@ -27,6 +22,15 @@ const ShowQR = () => {
         if (!cardElement) return;
         try {
             // !todo - Write logic to download Qr
+
+            html2canvas(qrRef.current).then(function (canvas) {
+                const link = document.createElement("a");
+                link.download = `${name}qr.jpg`;
+                link.style.padding = "1000px";
+                link.href = canvas.toDataURL("image/jpg");
+                console.log(link);
+                link.click();
+            });
         } catch (reason) {
             console.log(reason);
         }
@@ -44,10 +48,9 @@ const ShowQR = () => {
 
     return (
         <div className="bg-white rounded-md flex space-y-4 flex-col  shadow-2xl  justify-between items-center px-4 p-6 ">
-            <div>
+            <div ref={qrRef}>
                 {showQrCode && (
                     <QRCode
-                        ref={qrRef}
                         name="ScanToAddAttendance"
                         size={200}
                         value={name}
