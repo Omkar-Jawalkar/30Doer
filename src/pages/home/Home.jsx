@@ -1,6 +1,7 @@
 // import FirstLogin from "../../components/first-login/FirstLogin";
 import { BsQrCodeScan, BsQrCode } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
+import { GrPowerReset } from "react-icons/gr";
 import { useState, useEffect } from "react";
 
 const Home = () => {
@@ -68,6 +69,19 @@ const Home = () => {
                         );
                     })}
                 </div>
+
+                <button
+                    onClick={() => {
+                        localStorage.clear();
+                        getUserLoginStatus();
+                    }}
+                    className=" flex justify-center items-center gap-1 hover:bg-gray-100 duration-150 shadow-sm px-2 py-1 rounded-md border"
+                >
+                    <span>
+                        <GrPowerReset />
+                    </span>
+                    Reset
+                </button>
             </div>
         </div>
     );

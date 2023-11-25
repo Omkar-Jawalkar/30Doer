@@ -4,7 +4,7 @@ const Input = ({ state, setState, placeholder }) => {
     return (
         <input
             value={state}
-            className="p-2 shadow-md outline-none w-full  rounded-md "
+            className="p-2 border shadow-sm outline-none w-full  rounded-md "
             placeholder={placeholder}
             onChange={(e) => {
                 setState(e.target.value);

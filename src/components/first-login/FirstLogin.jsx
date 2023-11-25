@@ -2,12 +2,30 @@ import { useEffect, useState } from "react";
 import Button from "../button/Button";
 import Input from "../input/Input";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const FirstLogin = () => {
     const [name, setName] = useState("");
+    const [task, setTask] = useState("");
     const navigate = useNavigate();
     const onSave = () => {
+        if (name.length <= 0 && task.length <= 0) {
+            toast.warn("Please fill all the details", {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                type: "warning",
+            });
+            return;
+        }
         localStorage.setItem("name", name);
+        localStorage.setItem("task", task);
         navigate("/qr");
     };
 
@@ -19,12 +37,25 @@ const FirstLogin = () => {
     }, []);
     return (
         <div className="w-full h-[80vh] flex flex-col justify-center items-center">
-            <div className="bg-white rounded-md flex flex-col h-1/3 w-5/6 md:h-2/5 shadow-2xl md:w-1/3 justify-between items-center px-4 p-6 ">
-                <Input
-                    placeholder={"Enter your name..."}
-                    state={name}
-                    setState={setName}
-                />
+            <div className="bg-white gap-3 rounded-md flex flex-col h-[45%] w-5/6 md:h-[40%] shadow-2xl md:w-1/3 justify-between items-center px-4 p-4">
+                <div className="w-full">
+                    {" "}
+                    <label>Name</label>
+                    <Input
+                        placeholder={"Enter Your Name..."}
+                        state={name}
+                        setState={setName}
+                    />
+                </div>
+
+                <div className="w-full ">
+                    <label htmlFor=""> Your Task</label>
+                    <Input
+                        placeholder={"Please Enter you task "}
+                        state={task}
+                        setState={setTask}
+                    />
+                </div>
 
                 <div className="flex w-full gap-2 justify-end">
                     <Button
@@ -35,6 +66,11 @@ const FirstLogin = () => {
                     />
                 </div>
             </div>
+            <ToastContainer
+                className={"p-4"}
+                position="bottom-right"
+                autoClose={5000}
+            />
         </div>
     );
 };
