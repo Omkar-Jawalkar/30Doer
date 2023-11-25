@@ -8,9 +8,19 @@ import "react-toastify/dist/ReactToastify.css";
 const FirstLogin = () => {
     const [name, setName] = useState("");
     const [task, setTask] = useState("");
+
     const navigate = useNavigate();
+    const streak = Array(30).fill(true);
+
     const onSave = () => {
-        if (name.length <= 0 && task.length <= 0) {
+        if (name.length > 0 && task.length > 0) {
+            console.log("called");
+            localStorage.setItem("name", name);
+            localStorage.setItem("task", task);
+            localStorage.setItem("streak", JSON.stringify(streak));
+            navigate("/qr");
+        } else {
+            console.log("called");
             toast.warn("Please fill all the details", {
                 position: "bottom-right",
                 autoClose: 5000,
@@ -24,9 +34,6 @@ const FirstLogin = () => {
             });
             return;
         }
-        localStorage.setItem("name", name);
-        localStorage.setItem("task", task);
-        navigate("/qr");
     };
 
     useEffect(() => {
