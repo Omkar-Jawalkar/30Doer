@@ -21,14 +21,11 @@ const ShowQR = () => {
 
         if (!cardElement) return;
         try {
-            // !todo - Write logic to download Qr
-
             html2canvas(qrRef.current).then(function (canvas) {
                 const link = document.createElement("a");
                 link.download = `${name}qr.jpg`;
                 link.style.padding = "1000px";
                 link.href = canvas.toDataURL("image/jpg");
-                console.log(link);
                 link.click();
             });
         } catch (reason) {
