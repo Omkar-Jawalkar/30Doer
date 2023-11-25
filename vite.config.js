@@ -14,6 +14,10 @@ export default defineConfig({
             // add this to cache all the
             // static assets in the public folder
             includeAssets: ["**/*"],
+            devOptions: {
+                enabled: true,
+                type: "module",
+            },
             manifest: {
                 theme_color: "#16a221",
                 background_color: "#ffffff",
