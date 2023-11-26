@@ -21,7 +21,7 @@ export default defineConfig({
             manifest: {
                 theme_color: "#16a221",
                 background_color: "#ffffff",
-                display: "browser",
+                display: "fullscreen",
                 scope: "/",
                 start_url: "/",
                 name: "30 Doer",
