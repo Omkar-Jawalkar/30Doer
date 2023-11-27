@@ -3,11 +3,13 @@ import Button from "../button/Button";
 import Input from "../input/Input";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 import "react-toastify/dist/ReactToastify.css";
 
 const FirstLogin = () => {
     const [name, setName] = useState("");
     const [task, setTask] = useState("");
+    const { t } = useTranslation();
 
     const navigate = useNavigate();
     const streak = Array(30).fill(true);
@@ -47,18 +49,18 @@ const FirstLogin = () => {
             <div className="bg-white gap-3 rounded-md flex flex-col h-[45%] w-5/6 md:h-[40%] shadow-2xl md:w-1/3 justify-between items-center px-4 p-4">
                 <div className="w-full">
                     {" "}
-                    <label>Name</label>
+                    <label>{t("registerName")}</label>
                     <Input
-                        placeholder={"Enter Your Name..."}
+                        placeholder={t("registerNamePlaceholder")}
                         state={name}
                         setState={setName}
                     />
                 </div>
 
                 <div className="w-full ">
-                    <label htmlFor=""> Your Task</label>
+                    <label>{t("registerTaskName")}</label>
                     <Input
-                        placeholder={"Please Enter you task "}
+                        placeholder={t("registerTaskNamePlaceholder")}
                         state={task}
                         setState={setTask}
                     />

@@ -1,1 +1,7 @@
-{ "logoName": "30 Doer" }
+{
+    "logoName": "30 Doer",
+    "registerName": "Name",
+    "registerTaskName": "Your Task",
+    "registerNamePlaceholder": "Enter your name",
+    "registerTaskNamePlaceholder": "Please enter your task"
+}

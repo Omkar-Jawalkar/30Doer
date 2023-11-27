@@ -1,1 +1,7 @@
-{ "logoName": "30 कर्ता" }
+{
+    "logoName": "30 कर्ता",
+    "registerName": "नाम",
+    "registerTaskName": "आपका काम",
+    "registerNamePlaceholder": "अपना नाम दर्ज करें",
+    "registerTaskNamePlaceholder": "कृपया अपना कार्य दर्ज करें"
+}
