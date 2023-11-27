@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 import "react-toastify/dist/ReactToastify.css";
-
+// useTranslation used
 const FirstLogin = () => {
     const [name, setName] = useState("");
     const [task, setTask] = useState("");
