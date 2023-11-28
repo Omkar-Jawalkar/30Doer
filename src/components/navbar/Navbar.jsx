@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 
 const Navbar = () => {
     const [showMobileMenu, setShowMobileMenu] = useState(false);
-    const [name, setName] = useState("second");
+    const [name, setName] = useState(null);
 
     const { t } = useTranslation();
 
@@ -84,12 +84,32 @@ const Navbar = () => {
                         <ul className="px-4 flex flex-col gap-3 items-center my-4">
                             <li className="cursor-pointer hover:text-slate-400 transition-all duration-150 ">
                                 <Link
-                                    to={"/qr"}
+                                    to={"/"}
                                     onClick={() => {
                                         setShowMobileMenu(false); //
                                     }}
                                 >
                                     Home
+                                </Link>
+                            </li>
+                            <li className="cursor-pointer hover:text-slate-400 transition-all duration-150 ">
+                                <Link
+                                    to={"/qr"}
+                                    onClick={() => {
+                                        setShowMobileMenu(false); //
+                                    }}
+                                >
+                                    QR
+                                </Link>
+                            </li>
+                            <li className="cursor-pointer hover:text-slate-400 transition-all duration-150 ">
+                                <Link
+                                    to={"/selectLanguage"}
+                                    onClick={() => {
+                                        setShowMobileMenu(false); //
+                                    }}
+                                >
+                                    Language
                                 </Link>
                             </li>
                             <li className="cursor-pointer hover:text-slate-400 transition-all duration-150 ">

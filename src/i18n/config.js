@@ -5,8 +5,8 @@ import MRTRANSLATION from "./locales/mr/translations.json";
 import HITRANSLATION from "./locales/hi/translations.json";
 
 i18n.use(initReactI18next).init({
-    fallbackLng: "mr",
-    lng: "mr",
+    fallbackLng: "en",
+    lng: "en",
     resources: {
         en: {
             // eslint-disable-next-line no-undef
