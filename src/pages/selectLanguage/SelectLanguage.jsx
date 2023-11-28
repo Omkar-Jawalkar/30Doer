@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 
 const SelectLanguage = () => {
     const { i18n } = useTranslation();
-
     const [language, setLanguage] = useState("en");
 
     useEffect(() => {
@@ -11,7 +10,10 @@ const SelectLanguage = () => {
     }, [language]);
 
     return (
-        <div className="p-4  min-h-[79vh] flex justify-center items-center">
+        <div className="p-4  min-h-[79vh] flex flex-row justify-center items-center">
+            <label className="px-2" htmlFor="chooseLanguage">
+                Select Language
+            </label>
             <select
                 className=" outline-none rounded-md py-2 px-4"
                 name="chooseLanguage"
