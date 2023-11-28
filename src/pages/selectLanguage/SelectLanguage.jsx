@@ -7,6 +7,7 @@ const SelectLanguage = () => {
 
     useEffect(() => {
         i18n.changeLanguage(language);
+        // YEt
     }, [language]);
 
     return (
