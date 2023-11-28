@@ -15,6 +15,7 @@ const Navbar = () => {
         if (name) {
             setName(name);
         }
+        // TESTONG COMMIT
     }, []);
 
     return (
