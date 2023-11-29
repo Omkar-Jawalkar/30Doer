@@ -15,7 +15,6 @@ const Home = () => {
         name: "",
         task: "",
     });
-
     const [streak, setStreak] = useState([]);
     const [streakCount, setStreakCount] = useState(0);
     const navigate = useNavigate();
@@ -67,6 +66,7 @@ const Home = () => {
                     <button
                         onClick={() => {
                             // !todo - redirect to camera view
+                            navigate("/scan");
                         }}
                         className="rounded-md border p-3 shadow-sm border-black"
                     >
@@ -92,8 +92,8 @@ const Home = () => {
                                 } shadow-sm  px-3 py-3 max-w-[100%]  max-h-[100%]`}
                             >
                                 {/* <span className="font-bold m-0 p-0 text-center text-white">
-                                    {index}
-                                </span> */}
+                        {index}
+                    </span> */}
                             </div>
                         );
                     })}
@@ -112,6 +112,7 @@ const Home = () => {
                     Reset
                 </button>
             </div>
+            ;
         </div>
     );
 };

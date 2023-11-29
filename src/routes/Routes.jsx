@@ -9,6 +9,7 @@ import NavbarWrapper from "../components/navbarwrapper/NavbarWrapper";
 
 import FirstLogin from "../components/first-login/FirstLogin";
 import Home from "../pages/home/Home";
+import Html5QrcodePlugin from "../plugins/Html5QrcodePlugin";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
             {
                 path: "/aboutus",
                 element: <Aboutus />,
+            },
+            {
+                path: "/scan",
+                element: <Html5QrcodePlugin />,
             },
         ],
     },
