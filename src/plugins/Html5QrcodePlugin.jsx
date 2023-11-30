@@ -40,7 +40,7 @@ const Html5QrcodePlugin = () => {
                 { facingMode: isMobileBrowser ? "environment" : "user" },
                 {
                     fps: 10, // Optional, frame per seconds for qr code scanning
-                    qrbox: { width: 250, height: 250 }, // Optional, if you want bounded box UI
+                    qrbox: { width: 200, height: 200 }, // Optional, if you want bounded box UI
                 },
                 successScan,
                 errorScan
@@ -83,7 +83,7 @@ const Html5QrcodePlugin = () => {
         <div className="flex flex-col h-[90vh] w-full justify-center items-center">
             <div
                 id="reader"
-                className="w-[60vh] h-[60vh]"
+                className="w-[45vh] h-[45vh]"
                 ref={QrScanner}
             ></div>
             <button
