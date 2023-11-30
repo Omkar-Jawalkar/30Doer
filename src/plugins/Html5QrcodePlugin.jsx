@@ -40,7 +40,7 @@ const Html5QrcodePlugin = () => {
                 { facingMode: isMobileBrowser ? "environment" : "user" },
                 {
                     fps: 10, // Optional, frame per seconds for qr code scanning
-                    qrbox: { width: 200, height: 200 }, // Optional, if you want bounded box UI
+                    qrbox: { width: 250, height: 200 }, // Optional, if you want bounded box UI
                 },
                 successScan,
                 errorScan
@@ -80,27 +80,29 @@ const Html5QrcodePlugin = () => {
     //     }
     // }
     return (
-        <div className="flex flex-col h-[90vh] w-full justify-center items-center">
-            <div
-                id="reader"
-                className="w-[45vh] h-[45vh]"
-                ref={QrScanner}
-            ></div>
-            <button
-                className="bg-white border shadow-sm duration-200 hover:bg-white/50 px-4 py-2 rounded-md "
-                onClick={() => {
-                    if (cameraStarted) {
-                        stopCamera();
-                        setCameraStarted(false);
-                    } else {
-                        getCameraPermissions();
-                        startCamera();
-                        setCameraStarted(true);
-                    }
-                }}
-            >
-                {cameraStarted ? "Stop Camera" : "Start Camera"}
-            </button>
+        <div className="flex flex-col h-[60vh] gap-2 max-w-full justify-center items-center">
+            <div className="max-w-[50%] mt-4 gap-4 flex flex-col justify-center items-center h-full">
+                <div
+                    id="reader"
+                    className="w-[40vh] h-[40vh]"
+                    ref={QrScanner}
+                ></div>
+                <button
+                    className="bg-white border shadow-sm duration-200 hover:bg-white/50 px-4 py-2 rounded-md "
+                    onClick={() => {
+                        if (cameraStarted) {
+                            stopCamera();
+                            setCameraStarted(false);
+                        } else {
+                            getCameraPermissions();
+                            startCamera();
+                            setCameraStarted(true);
+                        }
+                    }}
+                >
+                    {cameraStarted ? "Stop Camera" : "Start Camera"}
+                </button>
+            </div>
         </div>
     );
 };
