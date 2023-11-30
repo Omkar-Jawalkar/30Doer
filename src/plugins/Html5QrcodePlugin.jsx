@@ -42,7 +42,7 @@ const Html5QrcodePlugin = () => {
                     fps: 10, // Optional, frame per seconds for qr code scanning
                     qrbox: isMobileBrowser
                         ? { width: 250, height: 300 }
-                        : { width: 250, height: 200 }, // Optional, if you want bounded box UI
+                        : { width: 200, height: 200 }, // Optional, if you want bounded box UI
                 },
                 successScan,
                 errorScan
@@ -55,10 +55,16 @@ const Html5QrcodePlugin = () => {
 
     function successScan(decodedText, decodedResult) {
         // !Todo : Write logic to update local store and redirect to Marked
-        navigate("/");
+        console.log(decodedResult);
+        console.log(decodedText);
+        stopCamera();
+        setCameraStarted(false);
+        navigator.vibrate(200);
     }
 
-    function errorScan(errorMessage) {}
+    function errorScan(errorMessage) {
+        console.log(errorMessage);
+    }
 
     useEffect(() => {
         html5QrCodeRef.current = new Html5Qrcode(QrScanner.current.id);
