@@ -40,7 +40,9 @@ const Html5QrcodePlugin = () => {
                 { facingMode: isMobileBrowser ? "environment" : "user" },
                 {
                     fps: 10, // Optional, frame per seconds for qr code scanning
-                    qrbox: { width: 250, height: 200 }, // Optional, if you want bounded box UI
+                    qrbox: isMobileBrowser
+                        ? { width: 250, height: 300 }
+                        : { width: 250, height: 200 }, // Optional, if you want bounded box UI
                 },
                 successScan,
                 errorScan
