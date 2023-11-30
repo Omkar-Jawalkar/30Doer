@@ -10,15 +10,27 @@ const FirstLogin = () => {
     const [name, setName] = useState("");
     const [task, setTask] = useState("");
     const { t } = useTranslation();
-
     const navigate = useNavigate();
-    const streak = Array(30).fill(true);
+    let streak = defaultStreakData();
+
+    function defaultStreakData() {
+        let today = new Date();
+        let year = today.getFullYear();
+        let month = today.getMonth();
+        let date = today.getDate();
+        let streakArray = [];
+        for (var i = 0; i < 30; i++) {
+            let dayString = new Date(year, month - 1, date + i).toDateString();
+            streakArray.push({ dayString, value: false });
+        }
+        return streakArray;
+    }
 
     const onSave = () => {
         if (name.length > 0 && task.length > 0) {
-            console.log("called");
             localStorage.setItem("name", name);
             localStorage.setItem("task", task);
+            console.log("while saving task", streak);
             localStorage.setItem("streak", JSON.stringify(streak));
             navigate("/qr");
         } else {
@@ -39,11 +51,10 @@ const FirstLogin = () => {
     };
 
     useEffect(() => {
-        const localName = localStorage.getItem("name");
-        if (localName) {
-            setName(localName);
-        }
+        defaultStreakData();
+        console.log(streak);
     }, []);
+
     return (
         <div className="w-full h-[80vh] flex flex-col justify-center items-center">
             <div className="bg-white gap-3 rounded-md flex flex-col h-[45%] w-5/6 md:h-[40%] shadow-2xl md:w-1/3 justify-between items-center px-4 p-4">

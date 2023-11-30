@@ -74,19 +74,6 @@ const Html5QrcodePlugin = () => {
         };
     }, []);
 
-    //     {
-    //     "decodedText": "Prajwal",
-    //     "result": {
-    //         "text": "Prajwal",
-    //         "format": {
-    //             "format": 0,
-    //             "formatName": "QR_CODE"
-    //         },
-    //         "debugData": {
-    //             "decoderName": "BarcodeDetector"
-    //         }
-    //     }
-    // }
     return (
         <div className="flex flex-col h-[60vh] gap-2 max-w-full justify-center items-center">
             <div className="max-w-[50%] mt-4  flex flex-col justify-center items-center h-full">

@@ -24,6 +24,7 @@ const Home = () => {
         const task = localStorage.getItem("task");
         const streak = localStorage.getItem("streak");
         const newStreak = JSON.parse(streak);
+        console.log(newStreak);
         if (name && task && streak) {
             setUserLogin({
                 name: name,
@@ -35,17 +36,17 @@ const Home = () => {
         }
     };
 
-    useEffect(() => {
-        const streakCount = streak.reduce((acc, curr) => {
-            if (curr === true) {
-                return acc + 1;
-            } else {
-                return acc;
-            }
-        }, 0);
-        console.log(streakCount);
-        setStreakCount(streakCount);
-    }, [streak]);
+    // useEffect(() => {
+    //     const streakCount = streak.reduce((acc, curr) => {
+    //         if (curr === true) {
+    //             return acc + 1;
+    //         } else {
+    //             return acc;
+    //         }
+    //     }, 0);
+    //     console.log(streakCount);
+    //     setStreakCount(streakCount);
+    // }, [streak]);
 
     useEffect(() => {
         getUserLoginStatus();
@@ -83,12 +84,12 @@ const Home = () => {
                 </div>
 
                 <div className="grid grid-rows-5 items-center grid-flow-col gap-4">
-                    {streak?.map((value, index) => {
+                    {streak?.map((item) => {
                         return (
                             <div
-                                key={index}
+                                key={item?.dayString}
                                 className={`${
-                                    value ? "bg-green-600" : "bg-gray-500"
+                                    item?.value ? "bg-green-600" : "bg-gray-500"
                                 } shadow-sm  px-3 py-3 max-w-[100%]  max-h-[100%]`}
                             >
                                 {/* <span className="font-bold m-0 p-0 text-center text-white">
