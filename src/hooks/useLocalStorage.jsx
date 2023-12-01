@@ -7,7 +7,7 @@
 
 import { useState } from "react";
 
-const useLocalStorage = ({ key, valueOrFunction }) => {
+const useLocalStorage = (key, valueOrFunction) => {
     const [state, setState] = useState(() => {
         try {
             let value = localStorage.getItem(key);
@@ -16,7 +16,8 @@ const useLocalStorage = ({ key, valueOrFunction }) => {
             } else {
                 return valueOrFunction;
             }
-        } catch {
+        } catch (err) {
+            console.log(err);
             return valueOrFunction;
         }
     });
@@ -26,7 +27,7 @@ const useLocalStorage = ({ key, valueOrFunction }) => {
             const finalValue =
                 valueOrFunction instanceof Function
                     ? valueOrFunction(state)
-                    : JSON.stringify(valueOrFunction);
+                    : valueOrFunction;
             setState(finalValue);
             localStorage.setItem(key, JSON.stringify(finalValue));
         } catch (error) {
@@ -34,7 +35,7 @@ const useLocalStorage = ({ key, valueOrFunction }) => {
         }
     };
 
-    return { state, updateState };
+    return [state, updateState];
 };
 
 export default useLocalStorage;

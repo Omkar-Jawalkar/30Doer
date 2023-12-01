@@ -1,15 +1,31 @@
 import { Html5Qrcode } from "html5-qrcode";
 import { useState, useEffect, useRef } from "react";
 import useDetectDevice from "../hooks/useDetectDevice";
-import { useNavigate } from "react-router-dom";
+import useLocalStorage from "../hooks/useLocalStorage";
+// import { useNavigate } from "react-router-dom";
 
 const Html5QrcodePlugin = () => {
     const QrScanner = useRef();
     const html5QrCodeRef = useRef();
-    const { isMobileBrowser, refetch } = useDetectDevice();
+    const { isMobileBrowser } = useDetectDevice();
     const cameraId = useRef();
     const [cameraStarted, setCameraStarted] = useState(false);
-    const { navigate } = useNavigate();
+    const [streak, setStreak] = useLocalStorage("streak", []);
+    // const { navigate } = useNavigate();
+
+    const markStreak = () => {
+        const currentDate = new Date().toDateString();
+        const updateStreak = streak.map((singleStreak) => {
+            if (singleStreak?.dayString === currentDate) {
+                return {
+                    ...singleStreak,
+                    value: true,
+                };
+            }
+            return singleStreak;
+        });
+        setStreak(updateStreak);
+    };
 
     const getCameraPermissions = async () => {
         await Html5Qrcode.getCameras()
@@ -55,10 +71,10 @@ const Html5QrcodePlugin = () => {
 
     function successScan(decodedText, decodedResult) {
         // !Todo : Write logic to update local store and redirect to Marked
-        console.log(decodedResult);
-        console.log(decodedText);
+
         stopCamera();
         setCameraStarted(false);
+        markStreak();
         navigator.vibrate(200);
     }
 

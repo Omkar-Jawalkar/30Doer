@@ -4,11 +4,22 @@ import Input from "../input/Input";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
+import useLocalStorage from "../../hooks/useLocalStorage";
 import "react-toastify/dist/ReactToastify.css";
+
 // useTranslation used
 const FirstLogin = () => {
     const [name, setName] = useState("");
     const [task, setTask] = useState("");
+    // eslint-disable-next-line no-unused-vars
+    const [localStorageName, setLocalStorageName] = useLocalStorage("name", "");
+    // eslint-disable-next-line no-unused-vars
+    const [localStorageTask, setLocalStorageTask] = useLocalStorage("task", "");
+    // eslint-disable-next-line no-unused-vars
+    const [localStorageStreak, setLocalStorageStreak] = useLocalStorage(
+        "streak",
+        ""
+    );
     const { t } = useTranslation();
     const navigate = useNavigate();
     let streak = defaultStreakData();
@@ -20,7 +31,7 @@ const FirstLogin = () => {
         let date = today.getDate();
         let streakArray = [];
         for (var i = 0; i < 30; i++) {
-            let dayString = new Date(year, month - 1, date + i).toDateString();
+            let dayString = new Date(year, month, date + i).toDateString();
             streakArray.push({ dayString, value: false });
         }
         return streakArray;
@@ -28,10 +39,9 @@ const FirstLogin = () => {
 
     const onSave = () => {
         if (name.length > 0 && task.length > 0) {
-            localStorage.setItem("name", name);
-            localStorage.setItem("task", task);
-            console.log("while saving task", streak);
-            localStorage.setItem("streak", JSON.stringify(streak));
+            setLocalStorageName({ value: name });
+            setLocalStorageTask({ value: task });
+            setLocalStorageStreak({ value: streak });
             navigate("/qr");
         } else {
             console.log("called");
@@ -52,7 +62,6 @@ const FirstLogin = () => {
 
     useEffect(() => {
         defaultStreakData();
-        console.log(streak);
     }, []);
 
     return (
