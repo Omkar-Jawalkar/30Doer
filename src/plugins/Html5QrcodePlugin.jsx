@@ -73,7 +73,7 @@ const Html5QrcodePlugin = () => {
     };
 
     function successScan(decodedText, decodedResult) {
-        if (atob(name?.value + task?.value) === decodedText) {
+        if (btoa(name?.value + task?.value) === decodedText) {
             setCameraStarted(false);
             stopCamera();
             markStreak(decodedText);
@@ -83,7 +83,7 @@ const Html5QrcodePlugin = () => {
     }
 
     function errorScan(errorMessage) {
-        console.log(errorMessage);
+        // console.log(errorMessage);
     }
 
     useEffect(() => {
