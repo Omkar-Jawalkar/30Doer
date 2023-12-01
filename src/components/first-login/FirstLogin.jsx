@@ -41,7 +41,7 @@ const FirstLogin = () => {
         if (name.length > 0 && task.length > 0) {
             setLocalStorageName({ value: name });
             setLocalStorageTask({ value: task });
-            setLocalStorageStreak({ value: streak });
+            setLocalStorageStreak(streak);
             navigate("/qr");
         } else {
             console.log("called");

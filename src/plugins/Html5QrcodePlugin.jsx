@@ -11,6 +11,8 @@ const Html5QrcodePlugin = () => {
     const cameraId = useRef();
     const [cameraStarted, setCameraStarted] = useState(false);
     const [streak, setStreak] = useLocalStorage("streak", []);
+    const [name, setName] = useLocalStorage("name", "");
+    const [task, setTask] = useLocalStorage("task", "");
     // const { navigate } = useNavigate();
 
     const markStreak = () => {
@@ -25,6 +27,7 @@ const Html5QrcodePlugin = () => {
             return singleStreak;
         });
         setStreak(updateStreak);
+        navigator.vibrate(200);
     };
 
     const getCameraPermissions = async () => {
@@ -70,12 +73,13 @@ const Html5QrcodePlugin = () => {
     };
 
     function successScan(decodedText, decodedResult) {
-        // !Todo : Write logic to update local store and redirect to Marked
-
-        stopCamera();
-        setCameraStarted(false);
-        markStreak();
-        navigator.vibrate(200);
+        if (atob(name?.value + task?.value) === decodedText) {
+            setCameraStarted(false);
+            stopCamera();
+            markStreak(decodedText);
+        } else {
+            navigator.vibrate(1000);
+        }
     }
 
     function errorScan(errorMessage) {
