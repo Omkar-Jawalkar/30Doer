@@ -3,6 +3,7 @@ import { BsQrCodeScan, BsQrCode } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { GrPowerReset } from "react-icons/gr";
 import { useState, useEffect } from "react";
+import useLocalStorage from "../../hooks/useLocalStorage";
 
 const Home = () => {
     /*
@@ -11,30 +12,11 @@ const Home = () => {
      *
      *
      */
-    const [userLogin, setUserLogin] = useState({
-        name: "",
-        task: "",
-    });
-    const [streak, setStreak] = useState([]);
     const [streakCount, setStreakCount] = useState(0);
+    const [name, setName] = useLocalStorage("name", "");
+    const [task, setTask] = useLocalStorage("task", "");
+    const [streak, setStreak] = useLocalStorage("streak", []);
     const navigate = useNavigate();
-
-    const getUserLoginStatus = () => {
-        const name = localStorage.getItem("name");
-        const task = localStorage.getItem("task");
-        const streak = localStorage.getItem("streak");
-        const newStreak = JSON.parse(streak);
-        console.log(newStreak);
-        if (name && task && streak) {
-            setUserLogin({
-                name: name,
-                task: task,
-            });
-            setStreak(newStreak);
-        } else {
-            navigate("/register");
-        }
-    };
 
     // useEffect(() => {
     //     const streakCount = streak.reduce((acc, curr) => {
@@ -49,7 +31,12 @@ const Home = () => {
     // }, [streak]);
 
     useEffect(() => {
-        getUserLoginStatus();
+        if (name && task && streak) {
+            //
+        } else {
+            navigate("/register");
+        }
+        console.log(streak);
     }, []);
 
     return (
@@ -57,7 +44,7 @@ const Home = () => {
             {/* <FirstLogin /> */}
             <div className="bg-white p-4 gap-6 max-w-[70%] md:max-w-[50%] flex flex-col justify-center items-center rounded-md shadom-2xl">
                 <h2 className="text-center flex flex-col text-xl ">
-                    {userLogin?.task}
+                    {task?.value}
                     <span className="text-sm text-slate-400 font-light">
                         Streak {streakCount} / {streak.length} days
                     </span>
@@ -103,7 +90,7 @@ const Home = () => {
                 <button
                     onClick={() => {
                         localStorage.clear();
-                        getUserLoginStatus();
+                        navigate("/register");
                     }}
                     className=" flex justify-center items-center gap-1 hover:bg-gray-100 duration-150 shadow-sm px-2 py-1 rounded-md border"
                 >
@@ -113,7 +100,6 @@ const Home = () => {
                     Reset
                 </button>
             </div>
-            ;
         </div>
     );
 };

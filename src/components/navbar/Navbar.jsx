@@ -3,20 +3,12 @@ import { Link } from "react-router-dom";
 import { IoIosMenu, IoMdArrowRoundBack } from "react-icons/io";
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import useLocalStorage from "../../hooks/useLocalStorage";
 
 const Navbar = () => {
     const [showMobileMenu, setShowMobileMenu] = useState(false);
-    const [name, setName] = useState(null);
-
+    const [name, setName] = useLocalStorage("name", "");
     const { t } = useTranslation();
-
-    useEffect(() => {
-        const name = localStorage.getItem("name");
-        if (name) {
-            setName(name);
-        }
-        // TESTONG COMMIT
-    }, []);
 
     return (
         <div className="relative">
@@ -79,7 +71,8 @@ const Navbar = () => {
 
                     <div className="flex my-4 flex-col ">
                         <h1 className="text-2xl text-center">
-                            Welcome <span className="underline">{name}</span>
+                            Welcome{" "}
+                            <span className="underline">{name?.value}</span>
                         </h1>
 
                         <ul className="px-4 flex flex-col gap-3 items-center my-4">

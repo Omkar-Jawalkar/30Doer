@@ -2,11 +2,15 @@ import { useEffect, useState, useRef } from "react";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import QRCode from "react-qr-code";
 import html2canvas from "html2canvas";
+import { useNavigate } from "react-router-dom";
 
 const ShowQR = () => {
     const [showQrCode, setShowQrCode] = useState(false);
     const [name, setName] = useLocalStorage("name", "");
+    const [task, setTask] = useLocalStorage("task", "");
+    const navigate = useNavigate();
     const qrRef = useRef();
+    const encodedUriNameTaskRef = useRef("");
 
     const downloadMyQr = async () => {
         const cardElement = qrRef.current;
@@ -26,6 +30,7 @@ const ShowQR = () => {
 
     useEffect(() => {
         if (name?.value.length > 0) {
+            encodedUriNameTaskRef.current = btoa(name?.value + task?.value);
             setShowQrCode(true);
         }
     }, [name]);
@@ -37,20 +42,30 @@ const ShowQR = () => {
                     <QRCode
                         name="ScanToAddAttendance"
                         size={200}
-                        value={name?.value}
+                        value={encodedUriNameTaskRef.current}
                         id="myQr"
                     />
                 )}
             </div>
             <h1 className="pt-5">Please Save this QR Code</h1>
-            <button
-                onClick={() => {
-                    downloadMyQr();
-                }}
-                className="px-2 py-1 border rounded-md "
-            >
-                Download
-            </button>
+            <div className=" flex gap-2">
+                <button
+                    onClick={() => {
+                        downloadMyQr();
+                    }}
+                    className="px-2 py-1 border rounded-md "
+                >
+                    Download
+                </button>
+                <button
+                    onClick={() => {
+                        navigate("/");
+                    }}
+                    className="px-2 py-1 text-white duration-100 hover:opacity-60 bg-green-600 border rounded-md "
+                >
+                    Continue
+                </button>
+            </div>
         </div>
     );
 };
