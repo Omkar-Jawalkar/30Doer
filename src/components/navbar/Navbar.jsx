@@ -15,6 +15,7 @@ const navMenu = [
 const Navbar = () => {
     const [showMobileMenu, setShowMobileMenu] = useState(false);
     const [name, setName] = useLocalStorage("name", "");
+    const [activeTab, setActiveTab] = useState(0);
     const { t } = useTranslation();
 
     return (
@@ -23,19 +24,21 @@ const Navbar = () => {
                 className={`flex w-full justify-between  backdrop-blur-xl  items-center py-4 px-4`}
             >
                 <div className="md:text-3xl hover:text-white duration-150  text-2xl text-[#97BC62]  p-2 flex-1 font-bold ">
-                    <Link
-                        to={"/"}
-                        className="cursor-pointer"
-                        onClick={() => {}}
-                    >
+                    <Link to={"/"} className="cursor-pointer">
                         {" "}
                         {t("logoName")}
                     </Link>
                 </div>
 
-                <ul className=" hidden md:flex  justify-center gap-3 items-center ">
-                    {navMenu.map((item) => (
-                        <MyListElement key={item?.name} {...item} />
+                <ul className=" hidden md:flex  justify-center gap-5 items-center ">
+                    {navMenu.map((item, index) => (
+                        <MyListElement
+                            tab={index}
+                            setActiveTab={setActiveTab}
+                            activeTab={activeTab}
+                            key={item?.name}
+                            {...item}
+                        />
                     ))}
                 </ul>
 
@@ -49,7 +52,7 @@ const Navbar = () => {
                 </div>
             </div>
             {showMobileMenu ? (
-                <div className=" shadow-xl flex flex-col justify-start min-h-screen w-5/6 gap-4 bg-white absolute top-0 transition-all right-0 ">
+                <div className=" shadow-xl flex flex-col justify-start min-h-screen w-5/6 gap-4 bg-[#2C5F2D] absolute top-0 transition-all right-0 ">
                     {/* TOP Part */}
                     <div className="flex justify-start w-full items-center p-2">
                         <button
@@ -70,46 +73,15 @@ const Navbar = () => {
                         </h1>
 
                         <ul className="px-4 flex flex-col gap-3 items-center my-4">
-                            <li className="cursor-pointer hover:text-slate-400 transition-all duration-150 ">
-                                <Link
-                                    to={"/"}
-                                    onClick={() => {
-                                        setShowMobileMenu(false); //
-                                    }}
-                                >
-                                    Home
-                                </Link>
-                            </li>
-                            <li className="cursor-pointer hover:text-slate-400 transition-all duration-150 ">
-                                <Link
-                                    to={"/qr"}
-                                    onClick={() => {
-                                        setShowMobileMenu(false); //
-                                    }}
-                                >
-                                    QR
-                                </Link>
-                            </li>
-                            <li className="cursor-pointer hover:text-slate-400 transition-all duration-150 ">
-                                <Link
-                                    to={"/selectLanguage"}
-                                    onClick={() => {
-                                        setShowMobileMenu(false); //
-                                    }}
-                                >
-                                    Language
-                                </Link>
-                            </li>
-                            <li className="cursor-pointer hover:text-slate-400 transition-all duration-150 ">
-                                <Link
-                                    to={"/aboutus"}
-                                    onClick={() => {
-                                        setShowMobileMenu(false); //
-                                    }}
-                                >
-                                    About us
-                                </Link>
-                            </li>
+                            {navMenu.map((item, index) => (
+                                <MyListElement
+                                    tab={index}
+                                    setActiveTab={setActiveTab}
+                                    activeTab={activeTab}
+                                    key={item?.name}
+                                    {...item}
+                                />
+                            ))}
                         </ul>
                     </div>
                 </div>
