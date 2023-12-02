@@ -4,7 +4,7 @@ import Footer from "../footer/Footer";
 
 const NavbarWrapper = () => {
     return (
-        <div className="min-h-screen flex flex-col justify-between items-center  bg-gradient-to-r from-rose-100 to-teal-100">
+        <div className="min-h-screen flex flex-col justify-between items-center bg-[#2C5F2D]">
             <div className="w-full h-full">
                 <div className="w-full">
                     <Navbar />
