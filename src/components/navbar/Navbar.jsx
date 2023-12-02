@@ -1,9 +1,16 @@
 import { FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { IoIosMenu, IoMdArrowRoundBack } from "react-icons/io";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import useLocalStorage from "../../hooks/useLocalStorage";
+import MyListElement from "./MyListItem";
+
+const navMenu = [
+    { name: "Home", url: "/" },
+    { name: "Languages", url: "/selectlanguage" },
+    { name: "About Us", url: "/aboutus" },
+];
 
 const Navbar = () => {
     const [showMobileMenu, setShowMobileMenu] = useState(false);
@@ -11,11 +18,11 @@ const Navbar = () => {
     const { t } = useTranslation();
 
     return (
-        <div className="relative">
+        <div className="relative text-white bg-[#2C5F2D]">
             <div
-                className={`flex w-full justify-between border-b shadow-md  backdrop-blur-xl  items-center py-4 px-4`}
+                className={`flex w-full justify-between  backdrop-blur-xl  items-center py-4 px-4`}
             >
-                <div className="md:text-3xl text-2xl   p-2 flex-1 font-bold ">
+                <div className="md:text-3xl hover:text-white duration-150  text-2xl text-[#97BC62]  p-2 flex-1 font-bold ">
                     <Link
                         to={"/"}
                         className="cursor-pointer"
@@ -26,24 +33,11 @@ const Navbar = () => {
                     </Link>
                 </div>
 
-                <ul className=" hidden md:flex flex-1 justify-center gap-3 items-center ">
-                    {/* <li className="cursor-pointer ">
-                        <Link to={"/qr"}>QR</Link>
-                    </li> */}
-                    <li className="cursor-pointer">
-                        <Link to={"/aboutus"}>About us</Link>
-                    </li>
-                    <li className="cursor-pointer">
-                        <Link to={"/selectlanguage"}>Language</Link>
-                    </li>
+                <ul className=" hidden md:flex  justify-center gap-3 items-center ">
+                    {navMenu.map((item) => (
+                        <MyListElement key={item?.name} {...item} />
+                    ))}
                 </ul>
-
-                <div className="flex-1 hidden md:flex justify-end w-full items-center ">
-                    <FaUser
-                        size={40}
-                        className=" border-black border shadow-sm p-2 rounded-full cursor-pointer"
-                    />
-                </div>
 
                 <div
                     onClick={() => {
