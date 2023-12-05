@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import QRCode from "react-qr-code";
 import html2canvas from "html2canvas";
@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 
 const ShowQR = () => {
     const [showQrCode, setShowQrCode] = useState(false);
-    const [name, setName] = useLocalStorage("name", "");
-    const [task, setTask] = useLocalStorage("task", "");
+    const [name] = useLocalStorage("name", "");
+    const [task] = useLocalStorage("task", "");
     const navigate = useNavigate();
     const qrRef = useRef();
     const encodedUriNameTaskRef = useRef("");
@@ -36,7 +36,7 @@ const ShowQR = () => {
     }, [name]);
 
     return (
-        <div className="bg-white rounded-md flex space-y-4 flex-col  shadow-2xl  justify-between items-center px-4 p-6 ">
+        <React.Fragment>
             <div ref={qrRef}>
                 {showQrCode && (
                     <QRCode
@@ -47,26 +47,32 @@ const ShowQR = () => {
                     />
                 )}
             </div>
-            <h1 className="pt-5">Please Save this QR Code</h1>
-            <div className=" flex gap-2">
+            <h1 className="pt-5 text-center">
+                Please Save this QR Code
+                <p className="text-slate-400 text-xs text-center">
+                    {" "}
+                    Youll be needing it to mark your attendance 😉
+                </p>
+            </h1>
+            <div className=" flex w-full justify-between items-stretch gap-2">
                 <button
                     onClick={() => {
                         downloadMyQr();
                     }}
-                    className="px-2 py-1 border rounded-md "
+                    className="px-2 w-full flex justify-center  gap-3 items-center py-1 border rounded-md "
                 >
-                    Download
+                    Save <span className="text-xl">⬇️</span>
                 </button>
                 <button
                     onClick={() => {
                         navigate("/");
                     }}
-                    className="px-2 py-1 text-white duration-100 hover:opacity-60 bg-green-600 border rounded-md "
+                    className="px-2 py-1 w-full justify-center items-center gap-1 flex text-white duration-100 hover:opacity-75 bg-green-600 border rounded-md "
                 >
-                    Continue
+                    Continue <span className="text-xl">😎</span>
                 </button>
             </div>
-        </div>
+        </React.Fragment>
     );
 };
 
