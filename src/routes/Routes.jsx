@@ -10,6 +10,7 @@ import NavbarWrapper from "../components/navbarwrapper/NavbarWrapper";
 import FirstLogin from "../components/first-login/FirstLogin";
 import Home from "../pages/home/Home";
 import Html5QrcodePlugin from "../plugins/Html5QrcodePlugin";
+import WhiteBackgroundWrapper from "../components/white-backround-wrapper/WhiteBackgroundWrapper";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -17,7 +18,11 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element: <Home />,
+                element: (
+                    <WhiteBackgroundWrapper>
+                        <Home />
+                    </WhiteBackgroundWrapper>
+                ),
             },
             {
                 path: "/register",
