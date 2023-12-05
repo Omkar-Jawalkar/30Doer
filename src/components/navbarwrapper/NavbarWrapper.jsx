@@ -4,6 +4,7 @@ import Footer from "../footer/Footer";
 import useFetch from "../../hooks/useFetch";
 import { ToastContainer, toast } from "react-toastify";
 import { useEffect, useRef } from "react";
+import ErrorBoundary from "../error-boundary/ErrorBoundary";
 
 const NavbarWrapper = () => {
     const { data, isLoading, error } = useFetch(
@@ -38,9 +39,11 @@ const NavbarWrapper = () => {
                 <div className="w-full">
                     <Navbar />
                 </div>
-                <div className="w-full min-h-screen">
-                    <Outlet />
-                </div>
+                <ErrorBoundary>
+                    <div className="w-full min-h-screen">
+                        <Outlet />
+                    </div>
+                </ErrorBoundary>
                 <ToastContainer className="p-4" />
             </div>
             <Footer />
