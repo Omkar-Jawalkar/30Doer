@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "../button/Button";
 import Input from "../input/Input";
 import { useNavigate } from "react-router-dom";
@@ -65,42 +65,41 @@ const FirstLogin = () => {
     }, []);
 
     return (
-        <div className="w-full h-[80vh] flex flex-col justify-center items-center">
-            <div className="bg-white gap-3 rounded-md flex flex-col h-[45%] w-5/6 md:h-[40%] shadow-2xl md:w-1/3 justify-between items-center px-4 p-4">
-                <div className="w-full">
-                    {" "}
-                    <label>{t("registerName")}</label>
-                    <Input
-                        placeholder={t("registerNamePlaceholder")}
-                        state={name}
-                        setState={setName}
-                    />
-                </div>
-
-                <div className="w-full ">
-                    <label>{t("registerTaskName")}</label>
-                    <Input
-                        placeholder={t("registerTaskNamePlaceholder")}
-                        state={task}
-                        setState={setTask}
-                    />
-                </div>
-
-                <div className="flex w-full gap-2 justify-end">
-                    <Button
-                        onClick={() => {
-                            onSave();
-                        }}
-                        title="Continue"
-                    />
-                </div>
+        <React.Fragment>
+            <div className="w-full">
+                {" "}
+                <label>{t("registerName")}</label>
+                <Input
+                    placeholder={t("registerNamePlaceholder")}
+                    state={name}
+                    setState={setName}
+                />
             </div>
+
+            <div className="w-full ">
+                <label>{t("registerTaskName")}</label>
+                <Input
+                    placeholder={t("registerTaskNamePlaceholder")}
+                    state={task}
+                    setState={setTask}
+                />
+            </div>
+
+            <div className="flex w-full gap-2 justify-end">
+                <Button
+                    onClick={() => {
+                        onSave();
+                    }}
+                    title="Continue"
+                />
+            </div>
+
             <ToastContainer
                 className={"p-4"}
                 position="bottom-right"
                 autoClose={5000}
             />
-        </div>
+        </React.Fragment>
     );
 };
 
