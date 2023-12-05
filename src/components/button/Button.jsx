@@ -8,11 +8,17 @@
  */
 
 import propTypes from "prop-types";
-const Button = ({ bgColor = "bg-green-600", onClick, title = "Save" }) => {
+const Button = ({
+    bgColor = "bg-green-600",
+    onClick,
+    title = "Save",
+    ...props
+}) => {
     return (
         <button
+            {...props}
             onClick={onClick}
-            className={` hover:shadow-2xl text-white font-bold  duration-100 leading-6 shadow-lg hover:-translate-y-1 ${bgColor} rounded-md px-4 py-2`}
+            className={` hover:shadow-2xl hover:opacity-30 w-full text-white font-bold  duration-100 leading-6 shadow-lg  ${bgColor} rounded-md px-4 py-2`}
         >
             {title}
         </button>
