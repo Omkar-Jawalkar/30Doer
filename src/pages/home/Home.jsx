@@ -13,22 +13,22 @@ const Home = () => {
      *
      */
     const [streakCount, setStreakCount] = useState(0);
-    const [name, setName] = useLocalStorage("name", "");
-    const [task, setTask] = useLocalStorage("task", "");
-    const [streak, setStreak] = useLocalStorage("streak", []);
+    const [name] = useLocalStorage("name", "");
+    const [task] = useLocalStorage("task", "");
+    const [streak] = useLocalStorage("streak", []);
     const navigate = useNavigate();
 
-    // useEffect(() => {
-    //     const streakCount = streak.reduce((acc, curr) => {
-    //         if (curr === true) {
-    //             return acc + 1;
-    //         } else {
-    //             return acc;
-    //         }
-    //     }, 0);
-    //     console.log(streakCount);
-    //     setStreakCount(streakCount);
-    // }, [streak]);
+    useEffect(() => {
+        const streakCount = streak.reduce((acc, curr) => {
+            if (curr?.value === true) {
+                return acc + 1;
+            } else {
+                return acc;
+            }
+        }, 0);
+        console.log(streakCount);
+        setStreakCount(streakCount);
+    }, [streak]);
 
     useEffect(() => {
         if (name && task && streak) {
