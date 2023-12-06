@@ -1,4 +1,3 @@
-import { FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { IoIosMenu, IoMdArrowRoundBack } from "react-icons/io";
 import { useState } from "react";
@@ -10,11 +9,12 @@ const navMenu = [
     { name: "Home", url: "/" },
     { name: "Languages", url: "/selectlanguage" },
     { name: "About Us", url: "/aboutus" },
+    { name: "Rules", url: "/rules" },
 ];
 
 const Navbar = () => {
     const [showMobileMenu, setShowMobileMenu] = useState(false);
-    const [name, setName] = useLocalStorage("name", "");
+    const [name] = useLocalStorage("name", "");
     const [activeTab, setActiveTab] = useState(0);
     const { t } = useTranslation();
 

@@ -16,11 +16,21 @@ const ShowQR = () => {
         const cardElement = qrRef.current;
         if (!cardElement) return;
         try {
-            html2canvas(qrRef.current).then(function (canvas) {
+            html2canvas(qrRef.current).then(function (originalCanvas) {
+                const padding = 20;
+                const paddedCanvas = document.createElement("canvas");
+                const context = paddedCanvas.getContext("2d");
+                paddedCanvas.width = originalCanvas.width + 2 * padding;
+                paddedCanvas.height = originalCanvas.height + 2 * padding;
+                context.fillStyle = "white";
+                context.fillRect(0, 0, paddedCanvas.width, paddedCanvas.height);
+                context.drawImage(originalCanvas, padding, padding);
+
                 const link = document.createElement("a");
-                link.download = `${name}qr.jpg`;
+                link.download = `${name?.value}qr.jpg`;
                 link.style.padding = "1000px";
-                link.href = canvas.toDataURL("image/jpg");
+                link.style.backgroundColor = "white";
+                link.href = paddedCanvas.toDataURL("image/jpg");
                 link.click();
             });
         } catch (reason) {
@@ -65,7 +75,7 @@ const ShowQR = () => {
                 </button>
                 <button
                     onClick={() => {
-                        navigate("/");
+                        navigate("/rules");
                     }}
                     className="px-2 py-1 w-full justify-center items-center gap-1 flex text-white duration-100 hover:opacity-75 bg-green-600 border rounded-md "
                 >
