@@ -75,7 +75,7 @@ const ShowQR = () => {
                 </button>
                 <button
                     onClick={() => {
-                        navigate("/");
+                        navigate("/rules");
                     }}
                     className="px-2 py-1 w-full justify-center items-center gap-1 flex text-white duration-100 hover:opacity-75 bg-green-600 border rounded-md "
                 >
