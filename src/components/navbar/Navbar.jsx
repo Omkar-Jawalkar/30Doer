@@ -52,7 +52,7 @@ const Navbar = () => {
                 </div>
             </div>
             {showMobileMenu ? (
-                <div className=" shadow-xl flex flex-col justify-start min-h-screen w-5/6 gap-4 bg-[#2C5F2D] absolute top-0 transition-all right-0 ">
+                <div className=" z-10 shadow-xl flex flex-col justify-start min-h-screen w-5/6 gap-4 bg-[#2C5F2D] absolute top-0 transition-all right-0 ">
                     {/* TOP Part */}
                     <div className="flex justify-start w-full items-center p-2">
                         <button
