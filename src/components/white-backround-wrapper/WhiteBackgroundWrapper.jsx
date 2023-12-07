@@ -6,7 +6,7 @@ const WhiteBackgroundWrapper = ({ children }) => {
     const navigate = useNavigate();
     return (
         <div className="w-full mt-12  min-h-[70vh] flex flex-col justify-center items-center ">
-            <div className="bg-white relative  p-4 gap-6 max-w-[70%] md:max-w-[50%] flex flex-col justify-center items-center rounded-md shadom-2xl">
+            <div className="bg-white relative  p-4 gap-6 max-w-[80%] md:max-w-[50%] flex flex-col justify-center items-center rounded-md shadom-2xl">
                 <span
                     onClick={() => {
                         navigate("/rules");
