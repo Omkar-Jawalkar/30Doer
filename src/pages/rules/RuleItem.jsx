@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 const RuleItem = ({ id = 1, rule = "", subrule = "" }) => {
     return (
-        <div className="flex gap-3  min-w-[240px] justify-start items-start   ">
+        <div className="flex gap-5  min-w-[240px] justify-start items-start   ">
             <div className="rounded-full font-bold w={30%}  bg-[#2C5F2D] px-3 py-1 text-white ">
                 {id}
             </div>
