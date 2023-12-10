@@ -104,7 +104,7 @@ const Html5QrcodePlugin = () => {
                 ></div>
                 <div className="gap-4 w-full py-4  flex justify-center items-center">
                     <button
-                        className="bg-white w-full mt-44 border shadow-sm duration-200 hover:bg-white/50 px-4 py-2 rounded-md "
+                        className="bg-whipte w-full mt-44 border shadow-sm duration-200 hover:bg-white/50 px-4 py-2 rounded-md "
                         type="button"
                     >
                         Back

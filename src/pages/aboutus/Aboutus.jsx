@@ -1,15 +1,20 @@
 const Aboutus = () => {
     return (
-        <div className="flex gap-1 my-6 flex-col justify-center items-center">
-            <h1 className="text-2xl font-bold">About us</h1>
+        <div className="flex my-6 flex-col justify-center px-4 items-center">
+            <h1 className="text-4xl my-6 font-bold">
+                About <span className="text-[#2C5F2D]">30 doer</span>
+            </h1>
 
             {/* ABOUT US MORE CONTENT */}
-            <p className="text-center">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Minima, incidunt commodi quasi vitae quibusdam, nesciunt eius
-                repellat explicabo at et quaerat! Fugit, corrupti? Repudiandae
-                fuga fugiat, modi nobis aliquid corrupti.
+            <p className="font-semibold text-slate-400 text-center">
+                A 30-day challenge is a great way to jumpstart a new habit or
+                practice.
             </p>
+            <p className="font-semibold text-slate-400 text-center">
+                Its also a great way to get out of a rut. You can do anything
+                for 30 days.
+            </p>
+            <p className="font-bold mt-6">You can do it! 💪</p>
         </div>
     );
 };
