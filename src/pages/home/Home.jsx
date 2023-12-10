@@ -2,8 +2,9 @@
 import { BsQrCodeScan, BsQrCode } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { GrPowerReset } from "react-icons/gr";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useTransition } from "react";
 import useLocalStorage from "../../hooks/useLocalStorage";
+import { useTranslation } from "react-i18next";
 
 const Home = () => {
     /*
@@ -17,6 +18,7 @@ const Home = () => {
     const [task] = useLocalStorage("task", "");
     const [streak] = useLocalStorage("streak", []);
     const navigate = useNavigate();
+    const { t } = useTranslation();
 
     useEffect(() => {
         const streakCount = streak.reduce((acc, curr) => {
@@ -44,7 +46,7 @@ const Home = () => {
             <h2 className="text-center flex flex-col text-xl ">
                 {task?.value}
                 <span className="text-sm text-slate-400 font-light">
-                    Streak {streakCount} / {streak.length} days
+                    {t("streak")} {streakCount} / {streak.length} {t("days")}
                 </span>
             </h2>
 
@@ -95,7 +97,7 @@ const Home = () => {
                 <span>
                     <GrPowerReset />
                 </span>
-                Reset
+                {t("reset")}
             </button>
         </React.Fragment>
     );

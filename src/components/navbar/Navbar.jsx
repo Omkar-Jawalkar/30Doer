@@ -6,10 +6,10 @@ import useLocalStorage from "../../hooks/useLocalStorage";
 import MyListElement from "./MyListItem";
 
 const navMenu = [
-    { name: "Home", url: "/" },
-    { name: "Languages", url: "/selectlanguage" },
-    { name: "About Us", url: "/aboutus" },
-    { name: "Rules", url: "/rules" },
+    { name: "home", url: "/" },
+    { name: "language", url: "/selectlanguage" },
+    { name: "aboutus", url: "/aboutus" },
+    { name: "rules", url: "/rules" },
 ];
 
 const Navbar = () => {
