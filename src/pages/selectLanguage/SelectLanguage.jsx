@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import useLocalStorage from "../../hooks/useLocalStorage";
 
 const SelectLanguage = () => {
