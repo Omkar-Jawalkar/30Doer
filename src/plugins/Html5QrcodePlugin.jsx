@@ -96,27 +96,35 @@ const Html5QrcodePlugin = () => {
 
     return (
         <div className="flex flex-col h-[60vh] gap-2 max-w-full justify-center items-center">
-            <div className="max-w-[50%] mt-4  flex flex-col justify-center items-center h-full">
+            <div className="max-w-full mt-4  flex flex-col justify-center items-center h-full">
                 <div
                     id="reader"
                     className="w-[40vh] h-[40vh]"
                     ref={QrScanner}
                 ></div>
-                <button
-                    className="bg-white mt-44 border shadow-sm duration-200 hover:bg-white/50 px-4 py-2 rounded-md "
-                    onClick={() => {
-                        if (cameraStarted) {
-                            stopCamera();
-                            setCameraStarted(false);
-                        } else {
-                            getCameraPermissions();
-                            startCamera();
-                            setCameraStarted(true);
-                        }
-                    }}
-                >
-                    {cameraStarted ? "Stop Camera" : "Start Camera"}
-                </button>
+                <div className="gap-4 w-full py-4  flex justify-center items-center">
+                    <button
+                        className="bg-white w-full mt-44 border shadow-sm duration-200 hover:bg-white/50 px-4 py-2 rounded-md "
+                        type="button"
+                    >
+                        Back
+                    </button>
+                    <button
+                        className="bg-white w-full mt-44 border shadow-sm duration-200 hover:bg-white/50 px-4 py-2 rounded-md "
+                        onClick={() => {
+                            if (cameraStarted) {
+                                stopCamera();
+                                setCameraStarted(false);
+                            } else {
+                                getCameraPermissions();
+                                startCamera();
+                                setCameraStarted(true);
+                            }
+                        }}
+                    >
+                        {cameraStarted ? "Stop Camera" : "Camera ✅ "}
+                    </button>
+                </div>
             </div>
         </div>
     );
