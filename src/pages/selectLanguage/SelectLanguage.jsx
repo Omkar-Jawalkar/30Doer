@@ -3,7 +3,7 @@ import React from "react";
 import useLocalStorage from "../../hooks/useLocalStorage";
 
 const SelectLanguage = () => {
-    const { i18n } = useTranslation();
+    const { t, i18n } = useTranslation();
     const [language, setLanguage] = useLocalStorage("language", {
         value: "en",
     });
@@ -11,7 +11,7 @@ const SelectLanguage = () => {
     return (
         <React.Fragment>
             <label className=" my-4 text-xl px-2" htmlFor="chooseLanguage">
-                Select Language
+                {t("selectLanguage")}
             </label>
             <select
                 className=" outline-none border  rounded-md py-2 px-4"
@@ -28,9 +28,9 @@ const SelectLanguage = () => {
                 <option value="hi">Hindi</option>
             </select>
             <p className="px-2 text-center text-slate-500">
-                We are working on adding more languages.
+                {t("selectLanguageDescription")}
                 <br />
-                If you want to help us, please contact us <br />
+                {t("selectLanguageDescription2")}
             </p>
             <span className="cursor-pointer my-1 underline font-semibold text-[#2C5F2D] ">
                 30Doer@gmail.com

@@ -90,7 +90,7 @@ const FirstLogin = () => {
                     onClick={() => {
                         onSave();
                     }}
-                    title="Continue"
+                    title={t("continue")}
                 />
             </div>
 
