@@ -46,7 +46,7 @@ const Home = () => {
             <h2 className="text-center flex flex-col text-xl ">
                 {task?.value}
                 <span className="text-sm text-slate-400 font-light">
-                    Streak {streakCount} / {streak.length} days
+                    {t("streak")} {streakCount} / {streak.length} {t("days")}
                 </span>
             </h2>
 
