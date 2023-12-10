@@ -1,4 +1,5 @@
 import Navbar from "../navbar/Navbar";
+import { useTranslation } from "react-i18next";
 import { Outlet } from "react-router-dom";
 import Footer from "../footer/Footer";
 import useFetch from "../../hooks/useFetch";
@@ -6,12 +7,19 @@ import { ToastContainer, toast } from "react-toastify";
 import { useEffect, useRef } from "react";
 import ErrorBoundary from "../error-boundary/ErrorBoundary";
 import WhiteBackgroundWrapper from "../white-backround-wrapper/WhiteBackgroundWrapper";
+import useLocalStorage from "../../hooks/useLocalStorage";
 
 const NavbarWrapper = () => {
+    const { i18n } = useTranslation();
+    const [language] = useLocalStorage("language", { value: "en" });
     const { data, isLoading, error } = useFetch(
         "https://api.themotivate365.com/stoic-quote"
     );
     const timeoutIdRef = useRef(null);
+
+    useEffect(() => {
+        i18n.changeLanguage(language?.value);
+    }, []);
 
     useEffect(() => {
         if (isLoading || error) return;
