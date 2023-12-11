@@ -2,7 +2,7 @@
 import { BsQrCodeScan, BsQrCode } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { GrPowerReset } from "react-icons/gr";
-import React, { useState, useEffect, useTransition } from "react";
+import React, { useState, useEffect } from "react";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import { useTranslation } from "react-i18next";
 
