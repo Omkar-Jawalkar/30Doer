@@ -10,11 +10,9 @@ const useFetch = (url = null) => {
             setIsLoading(true);
             const response = await fetch(url);
             const responseData = await response.json();
-            console.log(responseData);
             setData(responseData);
             setIsLoading(false);
         } catch (error) {
-            console.log(error);
             setError(error);
             setIsLoading(false);
         }

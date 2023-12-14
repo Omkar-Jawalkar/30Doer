@@ -28,7 +28,6 @@ const Home = () => {
                 return acc;
             }
         }, 0);
-        console.log(streakCount);
         setStreakCount(streakCount);
     }, [streak]);
 

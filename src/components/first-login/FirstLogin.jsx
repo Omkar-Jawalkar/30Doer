@@ -44,7 +44,6 @@ const FirstLogin = () => {
             setLocalStorageStreak(streak);
             navigate("/qr");
         } else {
-            console.log("called");
             toast.warn("Please fill all the details", {
                 position: "bottom-right",
                 autoClose: 5000,
