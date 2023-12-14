@@ -11,8 +11,8 @@ const Html5QrcodePlugin = () => {
     const cameraId = useRef();
     const [cameraStarted, setCameraStarted] = useState(false);
     const [streak, setStreak] = useLocalStorage("streak", []);
-    const [name, setName] = useLocalStorage("name", "");
-    const [task, setTask] = useLocalStorage("task", "");
+    const [name] = useLocalStorage("name", "");
+    const [task] = useLocalStorage("task", "");
     // const { navigate } = useNavigate();
 
     const markStreak = () => {
@@ -38,7 +38,6 @@ const Html5QrcodePlugin = () => {
                  * { id: "id", label: "label" }
                  */
                 if (devices && devices.length) {
-                    console.log(devices);
                     cameraId.current = devices[0].id;
                     // .. use this to start scanning.
                 }
@@ -91,6 +90,15 @@ const Html5QrcodePlugin = () => {
 
         return () => {
             // !todo : clean up the event listners
+            if (html5QrCodeRef.current) {
+                try {
+                    setCameraStarted(false);
+                    stopCamera();
+                    html5QrCodeRef.current.clear();
+                } catch (error) {
+                    console.log("Failed to clear html5QrcodeScanner. ", error);
+                }
+            }
         };
     }, []);
 
