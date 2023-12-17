@@ -3,7 +3,7 @@ import ShowScanSuccessPage from "../../pages/show-scan-success-page/ShowScanSucc
 import Html5QrcodePlugin from "../../plugins/Html5QrcodePlugin";
 
 const SuccessQrScanWrapper = () => {
-    const [showScanSuccess, setShowScanSuccess] = useState(true);
+    const [showScanSuccess, setShowScanSuccess] = useState(false);
 
     if (showScanSuccess) {
         return <ShowScanSuccessPage />;
