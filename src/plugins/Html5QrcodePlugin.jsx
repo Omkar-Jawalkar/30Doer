@@ -2,9 +2,8 @@ import { Html5Qrcode } from "html5-qrcode";
 import { useState, useEffect, useRef } from "react";
 import useDetectDevice from "../hooks/useDetectDevice";
 import useLocalStorage from "../hooks/useLocalStorage";
-// import { useNavigate } from "react-router-dom";
 
-const Html5QrcodePlugin = () => {
+const Html5QrcodePlugin = ({ showScanSuccess, setShowScanSuccess }) => {
     const QrScanner = useRef();
     const html5QrCodeRef = useRef();
     const { isMobileBrowser } = useDetectDevice();
@@ -13,6 +12,7 @@ const Html5QrcodePlugin = () => {
     const [streak, setStreak] = useLocalStorage("streak", []);
     const [name] = useLocalStorage("name", "");
     const [task] = useLocalStorage("task", "");
+
     // const { navigate } = useNavigate();
 
     const markStreak = () => {
@@ -76,6 +76,7 @@ const Html5QrcodePlugin = () => {
             setCameraStarted(false);
             stopCamera();
             markStreak(decodedText);
+            setShowScanSuccess(true);
         } else {
             navigator.vibrate(1000);
         }
@@ -89,7 +90,6 @@ const Html5QrcodePlugin = () => {
         html5QrCodeRef.current = new Html5Qrcode(QrScanner.current.id);
 
         return () => {
-            // !todo : clean up the event listners
             if (html5QrCodeRef.current) {
                 try {
                     setCameraStarted(false);

@@ -9,6 +9,7 @@ import Home from "../pages/home/Home";
 import Html5QrcodePlugin from "../plugins/Html5QrcodePlugin";
 import ShowQR from "../components/show-qr/ShowQR";
 import Rules from "../pages/rules/Rules";
+import SuccessQrScanWrapper from "../components/success-qr-scan-wrapper/SuccessQrScanWrapper";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -36,7 +37,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/scan",
-                element: <Html5QrcodePlugin />,
+                element: <SuccessQrScanWrapper />,
             },
             {
                 path: "/rules",
