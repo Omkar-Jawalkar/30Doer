@@ -6,7 +6,6 @@ import NavbarWrapper from "../components/navbarwrapper/NavbarWrapper";
 
 import FirstLogin from "../components/first-login/FirstLogin";
 import Home from "../pages/home/Home";
-import Html5QrcodePlugin from "../plugins/Html5QrcodePlugin";
 import ShowQR from "../components/show-qr/ShowQR";
 import Rules from "../pages/rules/Rules";
 import SuccessQrScanWrapper from "../components/success-qr-scan-wrapper/SuccessQrScanWrapper";
