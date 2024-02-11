@@ -12,6 +12,10 @@ The 30Doer Habit Tracker App is a Progressive Web Application (PWA) designed to 
 
 ## How to Use 🤔👨‍💻
 
+
+https://github.com/Omkar-Jawalkar/30Doer/assets/82781128/c4dde09c-83b3-425d-bbd3-32118153e760
+
+
 1. **Sign Up/Login**: Create an account or log in to start using the app.
 2. **Create Tasks**: Add your daily habits or tasks to the app and customize them as needed.
 3. **Scan QR Codes**: Each day, scan the QR code associated with the task you've completed to mark your attendance.
